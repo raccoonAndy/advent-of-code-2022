@@ -52,9 +52,8 @@ const runPartTwo = () => {
     if (sum != 0) {
       allSums.push(sum);
     }
-    let sorted = allSums.sort((a, b) => (a < b ? 1 : -1)).slice(0, 3);
-    let result = sorted.reduce((acc, current) => acc + current, 0);
-    console.log('Part 2: ', result);
+    let sorted = allSums.sort((a, b) => (a < b ? 1 : -1));
+    console.log('Part 2: ', sorted[0] + sorted[1] + sorted[2]);
   });
 };
 
