@@ -1,10 +1,4 @@
-'use strict';
-const fs = require('fs');
-const readline = require('readline');
-const path = require('path');
-
-const input = path.resolve(__dirname, 'input.txt');
-const test = path.resolve(__dirname, 'test.txt');
+import { readFile } from '../readFile.ts';
 
 // Part 1
 // A - rock < B - paper < C - scissors
@@ -13,8 +7,8 @@ const test = path.resolve(__dirname, 'test.txt');
 // AX, BY, CZ — draw
 // AZ, BX, CY — win
 // AY, BZ, CX — lose
-const runPartOne = () => {
-  let combinations = {
+const runPartOne = async () => {
+  const combinations: Record<string, Record<string, number[]>> = {
     A: {
       X: [1, 3],
       Y: [2, 6],
@@ -32,16 +26,11 @@ const runPartOne = () => {
     },
   };
   let sum = 0;
-  const readInterface = readline.createInterface({
-    input: fs.createReadStream(input),
-  });
-  readInterface.on('line', (line) => {
-    let game = line.split(' ');
+  await readFile((line: string) => {
+    const game = line.split(' ');
     sum += combinations[game[0]][game[1]][0] + combinations[game[0]][game[1]][1];
   });
-  readInterface.on('close', () => {
-    console.log('Part 1: ', sum);
-  });
+  console.log('Part 1: ', sum);
 };
 
 runPartOne();
@@ -49,8 +38,8 @@ runPartOne();
 // Part 2
 // X - lose, Y - draw, Z - win
 // A - rock < B - paper < C - scissors
-const runPartTwo = () => {
-  let combinations = {
+const runPartTwo = async () => {
+  const combinations: Record<string, Record<string, number[]>> = {
     A: {
       Y: [1, 3],
       Z: [2, 6],
@@ -68,16 +57,11 @@ const runPartTwo = () => {
     },
   };
   let sum = 0;
-  const readInterface = readline.createInterface({
-    input: fs.createReadStream(input),
-  });
-  readInterface.on('line', (line) => {
-    let game = line.split(' ');
+  await readFile((line: string) => {
+    const game: string[] = line.split(' ');
     sum += combinations[game[0]][game[1]][0] + combinations[game[0]][game[1]][1];
   });
-  readInterface.on('close', () => {
-    console.log('Part 2: ', sum);
-  });
+  console.log('Part 2: ', sum);
 };
 
 runPartTwo();
