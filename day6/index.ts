@@ -19,13 +19,13 @@ const runPartOne = async () => {
         }
         counterSymbols.set(line[i], value + 1);
       }
-      if (i > NUMBER_UNIQ_1 - 1) {
-        const symbolCount = counterSymbols.get(line[i - NUMBER_UNIQ_1]);
-        if (symbolCount != undefined) {
-          counterSymbols.set(line[i - NUMBER_UNIQ_1], symbolCount - 1);
-          if (counterSymbols.get(line[i - NUMBER_UNIQ_1]) === 0) {
+      if (i > 3) {
+        const value = counterSymbols.get(line[i - NUMBER_UNIQ_1]);
+        if (value != undefined) {
+          if (value - 1 === 0) {
             count -= 1;
           }
+          counterSymbols.set(line[i - NUMBER_UNIQ_1], value - 1);
         }
       }
       if (count === NUMBER_UNIQ_1) {
@@ -60,12 +60,12 @@ const runPartTwo = async () => {
         counterSymbols.set(line[i], value + 1);
       }
       if (i > 13) {
-        const symbolCount = counterSymbols.get(line[i - NUMBER_UNIQ_2]);
-        if (symbolCount != undefined) {
-          counterSymbols.set(line[i - NUMBER_UNIQ_2], symbolCount - 1);
-          if (counterSymbols.get(line[i - NUMBER_UNIQ_2]) === 0) {
+        const value = counterSymbols.get(line[i - NUMBER_UNIQ_2]);
+        if (value != undefined) {
+          if (value - 1 === 0) {
             count -= 1;
           }
+          counterSymbols.set(line[i - NUMBER_UNIQ_2], value - 1);
         }
       }
       if (count === NUMBER_UNIQ_2) {
