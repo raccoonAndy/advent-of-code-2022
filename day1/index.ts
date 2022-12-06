@@ -4,7 +4,7 @@ import { readFile } from '../readFile.ts';
 const runPartOne = async () => {
   let sum = 0;
   let max = Number.MIN_VALUE;
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     if (line !== '') {
       const current = parseInt(line);
       sum += current;
@@ -25,7 +25,7 @@ runPartOne();
 const runPartTwo = async () => {
   let sum = 0;
   const allSums: number[] = [];
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     if (line !== '') {
       const current = parseInt(line);
       sum += current;

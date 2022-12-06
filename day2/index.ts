@@ -26,7 +26,7 @@ const runPartOne = async () => {
     },
   };
   let sum = 0;
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     const game = line.split(' ');
     sum += combinations[game[0]][game[1]][0] + combinations[game[0]][game[1]][1];
   });
@@ -57,7 +57,7 @@ const runPartTwo = async () => {
     },
   };
   let sum = 0;
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     const game: string[] = line.split(' ');
     sum += combinations[game[0]][game[1]][0] + combinations[game[0]][game[1]][1];
   });

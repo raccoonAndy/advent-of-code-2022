@@ -3,7 +3,7 @@ import { readFile } from '../readFile.ts';
 // Part 1
 const runPartOne = async () => {
   let sum = 0;
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     const sections = line.split(',');
     const section1 = sections[0].split('-').map((x) => parseInt(x, 10));
     const section2 = sections[1].split('-').map((x) => parseInt(x, 10));
@@ -21,7 +21,7 @@ runPartOne();
 // Part 2
 const runPartTwo = async () => {
   let sum = 0;
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     const sections = line.split(',');
     const section1 = sections[0].split('-').map((x) => parseInt(x, 10));
     const section2 = sections[1].split('-').map((x) => parseInt(x, 10));

@@ -13,7 +13,7 @@ function getCode(symbol: string): number {
 // Part 1
 const runPartOne = async () => {
   const repeatedSymbols = new Map();
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     const left = line.slice(0, Math.ceil(line.length / 2));
     const right = line.slice(Math.ceil(line.length / 2), line.length);
     let code = 0;
@@ -43,7 +43,7 @@ const runPartTwo = async () => {
   const rucksacks: string[] = [];
   let count = 0;
   let sum = 0;
-  await readFile((line: string) => {
+  await readFile('input', (line: string) => {
     rucksacks[count % 3] = line;
     if (count % 3 === 2) {
       const a = new Set(rucksacks[0]);
