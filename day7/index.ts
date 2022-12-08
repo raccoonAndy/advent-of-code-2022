@@ -42,15 +42,15 @@ const parseInputToTree = async () => {
   return head;
 };
 
-function getSum(root: TreeNode, sum: number, sizes: number[], atLeast = 100000): number {
+function getSum(root: TreeNode, dirSize: number, sizes: number[], atLeast = 100000): number {
   if (root.nodes.length === 0) {
     return root.size;
   }
-  sum = 0;
+  dirSize = 0;
   for (let i = 0; i < root.nodes.length; i += 1) {
-    sum += getSum(root.nodes[i], sum, sizes, atLeast);
+    dirSize += getSum(root.nodes[i], dirSize, sizes, atLeast);
   }
-  root.size = sum;
+  root.size = dirSize;
   if (root.size < atLeast) sizes.push(root.size);
   return root.size;
 }
@@ -72,7 +72,7 @@ const NEED = 30000000;
 const runPartTwo = async () => {
   const head = await parseInputToTree();
   const sizes: number[] = [];
-  getSum(head, 0, sizes, AVAILABLE);
+  getSum(head, 0, sizes, NEED);
 
   const freeSpace = AVAILABLE - head.size;
   const neededSpace = NEED - freeSpace;
