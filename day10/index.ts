@@ -16,7 +16,7 @@ const runPartOne = async () => {
         sum += signal * xValue;
       }
     }
-    if (command.length > 1) {
+    if (command[0] == 'addx') {
       xValue += parseInt(command[1], 10);
     }
   });
@@ -45,11 +45,12 @@ const runPartTwo = async () => {
         result += '\n';
       }
     }
-    if (command.length > 1) {
+    if (command[0] == 'addx') {
       spriteAtIndex += parseInt(command[1], 10);
     }
   });
-  console.log('Part 2:\n', result);
+  console.log('Part 2:');
+  console.log(result);
 };
 
 runPartTwo();
