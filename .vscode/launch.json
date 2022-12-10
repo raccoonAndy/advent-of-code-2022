@@ -6,18 +6,16 @@
 	"configurations": [
 		{
 			"request": "launch",
-			"name": "Launch Program",
-			"type": "pwa-node",
-			"program": "${workspaceFolder}/main.ts",
+			"name": "Deno",
+			"type": "node",
+			"program": "${workspaceFolder}/day10/index.ts",
 			"cwd": "${workspaceFolder}",
-			"runtimeExecutable": "/usr/local/bin/deno",
+			"runtimeExecutable": "deno",
 			"runtimeArgs": [
 				"run",
-				"--unstable",
-				"--inspect",
-				"--allow-all"
 			],
-			"attachSimplePort": 9229
+			"outputCapture": "std",
+			"port": 9229
 		}
 	]
 }
