@@ -57,20 +57,18 @@ const task = async () => {
     rock++;
     while (true) {
       const dir = jets[j++ % jets.length];
-      if (
-        initCoords.every(([x, y]) => {
-          const newX = x + dir;
-          return newX >= 0 && newX <= 6 && !fillChamber.has(newX + y * 7);
-        })
-      ) {
+      const canMoveX = initCoords.every(([x, y]) => {
+        const newX = x + dir;
+        return newX >= 0 && newX <= 6 && !fillChamber.has(newX + y * 7);
+      });
+      if (canMoveX) {
         initCoords.forEach((point) => (point[0] += dir));
       }
-      if (
-        initCoords.every(([x, y]) => {
-          const newY = y - 1;
-          return newY >= 1 && !fillChamber.has(x + newY * 7);
-        })
-      ) {
+      const canMoveY = initCoords.every(([x, y]) => {
+        const newY = y - 1;
+        return newY >= 1 && !fillChamber.has(x + newY * 7);
+      });
+      if (canMoveY) {
         initCoords.forEach((point) => (point[1] -= 1));
       } else {
         break;
